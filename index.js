@@ -4,15 +4,12 @@ const getComputerChoice = () => {
     //this is how we get a random selection between 0-2
     const random = Math.floor(Math.random() * 3)
     //selects a random choice
-    const compChoice = choices[random]
-    return compChoice;
+    let computerSelection = choices[random]
+    return computerSelection;
 }
 
-//displays the random choice
-console.log(getComputerChoice())
-
 //This is is defining the parameters between player and comp selection
-const playRound = (playerSelection, computerSelection) => {
+function playRound(playerSelection, computerSelection) {
     //this is the if else section that will figure out who won based off choices
     if (playerSelection === 'rock' && computerSelection === 'rock') {
         return 'You tied! You both picked rock'
@@ -41,6 +38,11 @@ const playRound = (playerSelection, computerSelection) => {
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         return 'Better luck next time.. scissors beats paper.'
     }
+};
 
-    //This is creating a pop up window for the user to input their selection
-    let playerSelection = prompt('Please type your selection("rock", "paper", or "scissors")')
+//this is displaying the message for the player to chose
+let playerSelection = prompt('please type your selection("rock", "paper", or "scissors")');
+
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+
