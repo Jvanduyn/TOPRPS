@@ -42,6 +42,5 @@ const playRound = (playerSelection, computerSelection) => {
         return 'Better luck next time.. scissors beats paper.'
     }
 
-    const playerSelection = 'rock';
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    //This is creating a pop up window for the user to input their selection
+    let playerSelection = prompt('Please type your selection("rock", "paper", or "scissors")')
