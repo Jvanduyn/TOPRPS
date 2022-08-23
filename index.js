@@ -9,7 +9,7 @@ const getComputerChoice = () => {
 }
 
 //This is is defining the parameters between player and comp selection
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection, playerScore, compScore) {
     //this is the if else section that will figure out who won based off choices
     if (playerSelection === 'rock' && computerSelection === 'rock') {
         return 'You tied! You both picked rock'
@@ -21,28 +21,49 @@ function playRound(playerSelection, computerSelection) {
         return 'You tied! You both picked paper'
     }
     else if (playerSelection === 'scissors' && computerSelection === "paper") {
+        playerScore++
         return 'You rock! You win this round, scissors beats paper.'
     }
     else if (playerSelection === 'rock' && computerSelection === "scissors") {
+        playerScore++
         return 'You rock! You win this round, rock beats scissors.'
     }
     else if (playerSelection === 'paper' && computerSelection === "rock") {
+        playerScore++
         return 'You rock! You win this round, paper beats rock.'
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        compScore++
         return 'Better luck next time.. rock beats scissors.'
     }
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        compScore++
         return 'Better luck next time.. paper beats rock.'
     }
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        compScore++
         return 'Better luck next time.. scissors beats paper.'
     }
 };
 
-//this is displaying the message for the player to chose
-let playerSelection = prompt('please type your selection("rock", "paper", or "scissors")');
+const game = () => {
+    for (let i = 0; i < 5; i++);
+    let playerSelection = prompt('Please type your selction, either "rock", "paper", or Scissors"')
+    const computerSelection = getComputerChoice()
+    return playRound(playerSelection, computerSelection);
+}
+
+
+function showWinner(playerScore, compScore) {
+    if (playerScore > compScore) {
+        return ('Congrats! You beat the computer.')
+    } else if (playerScore < compScore) {
+        return ('You lost! Better luck next time')
+    } else {
+        return ('You tied! What a close round.')
+    }
+}
 
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
 
+console.log(game());
