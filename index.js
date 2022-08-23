@@ -12,7 +12,7 @@ const getComputerChoice = () => {
 }
 
 
-//This is is defining the parameters between player and comp selection
+//This is defining playRound and is saying that it is defined by this if else statement
 const playRound = (playerSelection, computerSelection) => {
     //this is the if else section that will figure out who won based off choices
     if (playerSelection === 'rock' && computerSelection === 'rock') {
