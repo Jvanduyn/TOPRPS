@@ -1,15 +1,19 @@
+let playerScore = 0
+let compScore = 0
+
 //This is how we get the random selection between r,p, or s
 const getComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"]
     //this is how we get a random selection between 0-2
     const random = Math.floor(Math.random() * 3)
     //selects a random choice
-    let computerSelection = choices[random]
-    return computerSelection;
+    let compChoice = choices[random]
+    return compChoice;
 }
 
+
 //This is is defining the parameters between player and comp selection
-function playRound(playerSelection, computerSelection, playerScore, compScore) {
+const playRound = (playerSelection, computerSelection) => {
     //this is the if else section that will figure out who won based off choices
     if (playerSelection === 'rock' && computerSelection === 'rock') {
         return 'You tied! You both picked rock'
@@ -44,26 +48,24 @@ function playRound(playerSelection, computerSelection, playerScore, compScore) {
         compScore++
         return 'Better luck next time.. scissors beats paper.'
     }
-};
-
-const game = () => {
-    for (let i = 0; i < 5; i++);
-    let playerSelection = prompt('Please type your selction, either "rock", "paper", or Scissors"')
-    const computerSelection = getComputerChoice()
-    return playRound(playerSelection, computerSelection);
 }
 
+const game = () => {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Please type your selction, either "rock", "paper", or Scissors"').toLowerCase()
+        const computerSelection = getComputerChoice()
+        playRound(playerSelection, computerSelection);
+    }
 
-function showWinner(playerScore, compScore) {
+
     if (playerScore > compScore) {
-        return ('Congrats! You beat the computer.')
+        return 'Congrats! You beat the computer.'
     } else if (playerScore < compScore) {
-        return ('You lost! Better luck next time')
+        return 'You lost! Better luck next time'
     } else {
-        return ('You tied! What a close round.')
+        return 'You tied! What a close round.'
     }
 }
 
-const computerSelection = getComputerChoice();
 
 console.log(game());
